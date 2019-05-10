@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <title>晩酌</title>
+  <script>
+    const sake = `サントリー 角瓶業務用40° 5Lペットの100ml,164
+ストロングゼロ〈ダブルレモン〉スーパー買い,120
+ストロングゼロ〈葡萄ダブル〉スーパー買い,120
+(休肝日)アサヒ ドライゼロ,106
+なんか適当に甲類150ml,100`
+    const tsumami = `鶏むね肉1kg冷凍のうち200gの照り焼き味鶏ハム,96
+塩辛半分ぐらい,75
+インスタント麺,100
+きゅうり,50
+さんま,120
+牛ブロックから照り焼き味ローストビーフ100g,120`
+const sakearr = sake.split('\n').map(m => m.match(/(.+),(.+)/))
+const tsumamiarr = tsumami.split('\n').map(m => m.match(/(.+),(.+)/))
+    addEventListener('DOMContentLoaded', () => {
+      document.getElementById('bt').addEventListener('click', e => {
+        const [, sakeSelect, sakeValue] = sakearr[Math.floor(Math.random() * sakearr.length)]
+        const [, tsumamiSelect, tsumamiValue] = tsumamiarr[Math.floor(Math.random() * sakearr.length)]
+        document.getElementById('result').innerHTML = `${sakeSelect}と${tsumamiSelect}で${parseInt(sakeValue) + parseInt(tsumamiValue)}円`
+      }, false)
+    }, false)
+  </script>
+</head>
+
+<body>
+  <button id="bt">ここ押せわおーん</button>
+  <div id="result"></div>
+</body>
+
+</html>
